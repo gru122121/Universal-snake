@@ -1,6 +1,9 @@
 console.log('Client.js loaded');
 
-const socket = io();
+const socket = io({
+    path: '/api/socketio',
+    transports: ['websocket', 'polling']
+});
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
