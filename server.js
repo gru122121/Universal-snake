@@ -1,13 +1,12 @@
 const express = require('express');
 const app = express();
-const http = require('http').createServer(app);
-const io = require('socket.io')(http, {
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, {
     cors: {
-        origin: process.env.CORS_ORIGIN || "*",
+        origin: "*",
         methods: ["GET", "POST"]
     },
-    pingTimeout: 10000,
-    pingInterval: 5000
+    path: '/socket.io/'
 });
 
 const UniversalSnake = require('./public/game.js');
@@ -156,7 +155,12 @@ const gameServer = new GameServer();
 app.use(express.static('public'));
 app.use(express.json({ limit: '10kb' })); // Limit payload size
 
-http.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    gameServer.startGameLoop();
-}); 
+// For Vercel, we need to handle both the WebSocket and HTTP
+if (process.env.VERCEL) {
+    module.exports = app;
+} else {
+    server.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+        gameServer.startGameLoop();
+    });
+} 
