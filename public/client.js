@@ -1,7 +1,11 @@
 console.log('Client.js loaded');
 
-const socket = io({
-    path: '/api/socketio',
+// Get the server URL dynamically
+const serverUrl = window.location.hostname === 'localhost' 
+    ? 'http://localhost:3000'
+    : window.location.origin;
+
+const socket = io(serverUrl, {
     transports: ['websocket', 'polling']
 });
 const canvas = document.getElementById('gameCanvas');
