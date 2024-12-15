@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🐍 Discord Snake</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-wrapper">
+        <div class="score-container">
+            <div class="score-box">
+                <span class="emoji-label">🎯</span>
+                Score: <span id="currentScore">0</span>
+            </div>
+            <div class="score-box">
+                <span class="emoji-label">👑</span>
+                High: <span id="highScore">0</span>
+            </div>
+            <div class="score-box">
+                <span class="emoji-label">👥</span>
+                Players: <span id="onlineUsers">0</span>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="timer"></div>
+        <div id="currentVotes"></div>
+        
+        <div id="instructions">
+            <span class="emoji-label">⌨️</span>
+            Use arrow keys to vote for the next move
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="game.js"></script>
+    <script src="client.js"></script>
+</body>
+</html> 

@@ -1,0 +1,115 @@
+:root {
+    --bg-primary: #36393F;
+    --bg-secondary: #2F3136;
+    --bg-tertiary: #202225;
+    --accent-blurple: #5865F2;
+    --accent-pink: #EB459E;
+    --accent-yellow: #FEE75C;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B9BBBE;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-secondary);
+    padding: 12px;
+    border-radius: 12px;
+    width: min(95vw, 600px);
+}
+
+.score-container {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.score-box {
+    background: var(--bg-tertiary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    min-width: 100px;
+    text-align: center;
+}
+
+#gameCanvas {
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    width: min(75vw, 400px);
+    height: min(75vw, 400px);
+}
+
+#timer {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--accent-blurple);
+}
+
+.votes-container {
+    background: var(--bg-tertiary);
+    padding: 10px;
+    border-radius: 8px;
+    width: min(75vw, 400px);
+}
+
+.vote-option {
+    background: var(--bg-secondary);
+    margin-bottom: 6px;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.vote-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.vote-bar-bg {
+    height: 6px;
+    background: var(--bg-primary);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.vote-bar {
+    height: 100%;
+    transition: width 0.2s;
+}
+
+.my-vote {
+    border-left: 3px solid var(--accent-blurple);
+}
+
+#instructions {
+    color: var(--text-secondary);
+    font-size: 12px;
+    text-align: center;
+}
+
+.vote-up .vote-bar { background: var(--accent-blurple); }
+.vote-down .vote-bar { background: var(--accent-pink); }
+.vote-left .vote-bar { background: var(--accent-yellow); }
+.vote-right .vote-bar { background: var(--accent-blurple); }
+
+@media (max-width: 480px) {
+    .game-wrapper { padding: 8px; }
+    .score-box { min-width: 80px; font-size: 14px; }
+    #timer { font-size: 18px; }
+} 
